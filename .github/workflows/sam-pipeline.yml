@@ -18,6 +18,11 @@ jobs:
       - run: sam build --use-container
 
 # Run Unit tests- Specify unit tests here 
+      - name: Test with pytest
+        run: |
+          pip install pytest
+          pip install pytest-cov
+          pytest ./tests/unit/test_handler.py
 
 # sam deploy
       - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-hello-world --s3-bucket cicdtestcyreen --capabilities CAPABILITY_IAM --region eu-central-1
